@@ -1,0 +1,49 @@
+{
+  "registry_version": "1.0.0",
+  "repo": "ATLAS",
+  "last_updated": "2026-03-03T03:19:00Z",
+  "skills": [
+    {
+      "skill_id": "provision_infrastructure",
+      "name": "Provision Infrastructure",
+      "category": "iac_terraform",
+      "entry_point": "skills/provision_infrastructure.py",
+      "description": "Provision cloud resources using Terraform",
+      "parameters": {
+        "provider": "str",
+        "config_path": "str",
+        "variables": "Dict[str, Any]"
+      },
+      "returns": "Dict[str, Any]",
+      "confidence": 0.95
+    },
+    {
+      "skill_id": "deploy_kubernetes",
+      "name": "Deploy Kubernetes",
+      "category": "iac_kubernetes",
+      "entry_point": "skills/deploy_kubernetes.py",
+      "description": "Deploy K8s clusters and workloads",
+      "parameters": {
+        "cluster_name": "str",
+        "manifest_path": "str",
+        "namespace": "str"
+      },
+      "returns": "Dict[str, Any]",
+      "confidence": 0.94
+    },
+    {
+      "skill_id": "manage_containers",
+      "name": "Manage Containers",
+      "category": "iac_docker",
+      "entry_point": "skills/manage_containers.py",
+      "description": "Docker container orchestration",
+      "parameters": {
+        "action": "str",
+        "compose_path": "str"
+      },
+      "returns": "Dict[str, Any]",
+      "confidence": 0.93
+    }
+  ],
+  "total_skills": 3
+}

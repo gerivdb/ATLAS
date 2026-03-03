@@ -1,0 +1,76 @@
+{
+  "registry_version": "1.0.0",
+  "repo": "ATLAS",
+  "last_updated": "2026-03-03T03:19:00Z",
+  "managers": [
+    {
+      "manager_id": "daemon_manager",
+      "name": "DaemonManager",
+      "type": "daemon_orchestration",
+      "entry_point": "managers/daemon_manager.py",
+      "confidence": 0.95,
+      "description": "Manages Terraform and K8s orchestration daemons",
+      "daemons": [
+        {
+          "daemon_id": "terraform",
+          "name": "TerraformDaemon",
+          "interval": 600,
+          "description": "Manage Terraform state + drift detection (10min)"
+        },
+        {
+          "daemon_id": "k8s_orchestrator",
+          "name": "K8sOrchestratorDaemon",
+          "interval": 180,
+          "description": "Orchestrate K8s workloads (3min)"
+        }
+      ]
+    },
+    {
+      "manager_id": "skill_manager",
+      "name": "SkillManager",
+      "type": "skill_orchestration",
+      "entry_point": "managers/skill_manager.py",
+      "confidence": 0.95,
+      "description": "Orchestrates Terraform, K8s, and Docker skills",
+      "features": [
+        "skill_execution",
+        "skill_registry",
+        "skill_validation"
+      ]
+    },
+    {
+      "manager_id": "infrastructure_manager",
+      "name": "InfrastructureManager",
+      "type": "resource_management",
+      "entry_point": "managers/infrastructure_manager.py",
+      "confidence": 0.94,
+      "description": "Cloud resource management across providers",
+      "features": [
+        "resource_registration",
+        "state_tracking",
+        "lifecycle_management",
+        "multi_cloud_support"
+      ]
+    },
+    {
+      "manager_id": "config_manager",
+      "name": "ConfigManager",
+      "type": "configuration_management",
+      "entry_point": "managers/config_manager.py",
+      "confidence": 0.93,
+      "description": "Configuration templating for IaC",
+      "features": [
+        "template_registration",
+        "template_rendering",
+        "variable_substitution",
+        "template_versioning"
+      ]
+    }
+  ],
+  "dependencies": {
+    "internal": ["DevTools", "ECOYSTEM"],
+    "external": ["terraform", "kubectl", "docker", "docker-compose"]
+  },
+  "total_managers": 4,
+  "total_daemons": 2
+}
